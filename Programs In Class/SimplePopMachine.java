@@ -19,7 +19,7 @@ public class SimplePopMachine {
         if(amountDeposited >= price) {
             System.out.println("Here's your: " + drink);
         } else {
-        System.out.println("Please enter more money, you need " + (price-amountDeposited) + " cents more!");
+        System.out.println("Please enter more money, you need " + (price-amountDeposited) + "\u00A2 more!");
         }
     }
 

@@ -8,6 +8,10 @@
     Write the sum() function of problem #11 in Section 1.3.  Hint: use an enhanced-for loop.
     Write a sum(int[] data) method for the ArrayFunctions class that returns
     the sum of the elements in the given array. Test your implementation in main().
+
+    Write a min(int[] data) method for the ArrayFunctions class that returns
+    the value of the smallest element in the given array. You may
+    assume the array is nonempty. Test your implementation in main().
  */
 
 public class ArrayFunctions {
@@ -28,6 +32,15 @@ public class ArrayFunctions {
             }
         }
         return -1;
+    }
+    public static int min(int[] data) {
+        int totalMin = data[0];
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] <= totalMin) {
+                totalMin = data[i];
+            }
+        }
+        return totalMin;
     }
 
     public static int sum(int[] data) {
@@ -52,6 +65,7 @@ public class ArrayFunctions {
         System.out.println(linearSearchString(words, "banana"));
         System.out.println(linearSearchString(words, "orange"));
         System.out.println("The sum of the array is " + sum(nums));
+        System.out.println("The min number in the array is " + min(nums));
         /* System.out.println(linearSearch(nums, 33));
         System.out.println(linearSearch(nums, 2));
         display(nums); */
