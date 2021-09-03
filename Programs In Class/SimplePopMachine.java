@@ -16,14 +16,17 @@ public class SimplePopMachine {
     }
 
     public void select(){
-        //needs to keep track of money
-        System.out.println(drink);
+        if(amountDeposited >= price) {
+            System.out.println("Here's your: " + drink);
+        } else {
+        System.out.println("Please enter more money, you need " + (price-amountDeposited) + " cents more!");
+        }
     }
 
    public static void main(String[] args) {
         SimplePopMachine machine = new SimplePopMachine("water", 100);
         machine.deposit(50);
-        machine.deposit(25);
+        //machine.deposit(25);
         machine.deposit(25);
         machine.select();
    } 
