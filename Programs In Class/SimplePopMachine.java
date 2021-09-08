@@ -38,6 +38,12 @@ public class SimplePopMachine {
         }
     }
 
+    public String toString() {
+        // return a string that represents our object
+        // called automatically by SYstem.out.println()
+        return drink + ": " + price + "\u00A2";
+    }
+
    public static void main(String[] args) {
         SimplePopMachine machine = new SimplePopMachine("water", 100);
         //money will be given back to user as there will not be enough in balance
@@ -55,5 +61,7 @@ public class SimplePopMachine {
         SimplePopMachine pepsi = new SimplePopMachine("pepsi");
         pepsi.deposit(150);
         pepsi.select();
+
+        System.out.println(pepsi);
    } 
 }
