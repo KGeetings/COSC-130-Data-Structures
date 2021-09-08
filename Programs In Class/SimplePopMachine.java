@@ -3,11 +3,16 @@ public class SimplePopMachine {
     private String drink;
     private int price;
     private int amountDeposited;
+    private static final int DEFAULT_PRICE = 150; 
 
     //constructors (set up a new object)
     public SimplePopMachine(String drink, int price) {
         this.drink = drink;
         this.price = price;
+    }
+
+    public SimplePopMachine(String drink) {
+        this(drink, DEFAULT_PRICE);
     }
 
     //methods
@@ -46,5 +51,9 @@ public class SimplePopMachine {
         //user will now deposit an amount and refund the money
         machine.deposit(50);
         machine.refund();
+
+        SimplePopMachine pepsi = new SimplePopMachine("pepsi");
+        pepsi.deposit(150);
+        pepsi.select();
    } 
 }
