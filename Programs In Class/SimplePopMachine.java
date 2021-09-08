@@ -29,7 +29,7 @@ public class SimplePopMachine {
             amountDeposited -= price;
             refund();
         } else {
-            refund();
+            System.out.println("Please enter " + (price - amountDeposited) + "\u00A2 more.");
         }
     }
 
