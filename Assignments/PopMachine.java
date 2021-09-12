@@ -2,14 +2,17 @@
 
 PopMachine(String[] selections, price) constructor.  Assume all selections have the same price.
 deposit(int amount) method like SimplePopMachine
-select(int choice) to vend a particular selection.  Choices are numbered by their array index (0, 1, 2, etc.).  If the choice is invalid, print a message.  Otherwise, handle it like SimplePopMachine did, including a refund of any extra change.  (When vending is successful, display the name of the selection.)
+select(int choice) to vend a particular selection.  Choices are numbered by their array index (0, 1, 2, etc.).  
+If the choice is invalid, print a message.  Otherwise, handle it like SimplePopMachine did, including a refund of any extra change. 
+ (When vending is successful, display the name of the selection.)
 refund() method like SimplePopMachine
 main() to test your methods
 
 You do not need to include any other methods.
 Java notes:
 
-In main, create a String array with your selections in a variable to pass to the constructor.  You cannot create the array in the call to the constructor.
+In main, create a String array with your selections in a variable to pass to the constructor.  
+You cannot create the array in the call to the constructor.
 See page 4 for the && and || boolean operators.  They help you write more complex tests. */
 
 public class PopMachine {
@@ -54,7 +57,7 @@ public class PopMachine {
 
     public String toString() {
         // return a string that represents our object
-        // called automatically by SYstem.out.println()
+        // called automatically by System.out.println()
         return drink + ": " + price + "\u00A2";
     }
 
