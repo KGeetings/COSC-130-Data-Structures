@@ -50,6 +50,13 @@ public class ArrayFunctions {
         }
         return totalSum;
     }
+    public static void insertionSort(int[] data) {
+        for(int i = 1; i < data.length; i++) {
+            // put data[i] in correct spot
+            int key = data[i];
+            
+        }
+    }
 
     public static void display(int[] data) {
         for (int num: data) {
@@ -69,5 +76,7 @@ public class ArrayFunctions {
         /* System.out.println(linearSearch(nums, 33));
         System.out.println(linearSearch(nums, 2));
         display(nums); */
+        insertionSort(nums);
+        display(nums);
     }
 }
