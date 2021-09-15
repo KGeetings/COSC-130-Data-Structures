@@ -55,10 +55,14 @@ public class ArrayFunctions {
             // put data[i] in correct spot
             int key = data[i];
             int j = i - 1;
-            while(j >= 0 &&key < data[j]) {
+            //run through values of data, making sure j doesn't exit the array(-1), and the number we want to move is less than the other parts of array
+            while(j >= 0 && key < data[j]) {
+                //place the correct value in it's ordered spot
                 data[j + 1] = data[j];
+                //decrease j by 1 to make sure it remains the same value as when it entered
                 j--;
             }
+            //add the number we wanted to move from the beginning into the correct spot (as it wasn't saved when overwriting the array)
             data[j + 1] = key;
         }
     }
@@ -72,15 +76,15 @@ public class ArrayFunctions {
 
     public static void main(String[] args) {
         //do printing here
-        int[] nums = {5, 12, 3, 1, -11, 33, 44};
+        int[] nums = {5, 12, 3, 1, -11, 33, 44, -22};
         String[] words = {"apple", "pear", "banana", "grape"};
         System.out.println(linearSearchString(words, "banana"));
         System.out.println(linearSearchString(words, "orange"));
         System.out.println("The sum of the array is " + sum(nums));
         System.out.println("The min number in the array is " + min(nums));
-        /* System.out.println(linearSearch(nums, 33));
+        System.out.println(linearSearch(nums, 33));
         System.out.println(linearSearch(nums, 2));
-        display(nums); */
+        display(nums);
         insertionSort(nums);
         display(nums);
     }
