@@ -24,7 +24,6 @@ public class ArrayFunctions {
         }
     }
 
-
     public static int linearSearch(int[] data, int target) {
         // return first location with target or -1 if not found
         for (int i = 0; i < data.length; i++) {
