@@ -17,19 +17,14 @@ See page 4 for the && and || boolean operators.  They help you write more comple
 
 public class PopMachine {
     //fields (variables stored in each object)
-    private String drink;
+    private String[] selections;
     private int price;
     private int amountDeposited;
-    private static final int DEFAULT_PRICE = 150; 
 
     //constructors (set up a new object)
-    public PopMachine(String drink, int price) {
-        this.drink = drink;
+    public PopMachine(String[] selections, int price) {
+        this.selections = selections;
         this.price = price;
-    }
-
-    public PopMachine(String drink) {
-        this(drink, DEFAULT_PRICE);
     }
 
     //methods
@@ -45,41 +40,40 @@ public class PopMachine {
         }
     }
 
-    public void select(){
-        if(amountDeposited >= price) {
-            System.out.println("Here's your: " + drink);
-            amountDeposited -= price;
-            refund();
+    public void select(int choice){
+        if(choice >= 0 && choice <= selections.length){
+            if(amountDeposited >= price) {
+                System.out.println("Here's your: " + selections[choice]);
+                amountDeposited -= price;
+                refund();
+            } else {
+                System.out.println("Please enter " + (price - amountDeposited) + "\u00A2 more.");
+            }
         } else {
-            System.out.println("Please enter " + (price - amountDeposited) + "\u00A2 more.");
-        }
-    }
-
-    public String toString() {
-        // return a string that represents our object
-        // called automatically by System.out.println()
-        return drink + ": " + price + "\u00A2";
+            System.out.println("The item you have entered does not exist, if you believe this is an error please contact support at 641-628-1411");
+        }   
     }
 
    public static void main(String[] args) {
-        PopMachine machine = new PopMachine("water", 100);
-        //money will be given back to user as there will not be enough in balance
-        machine.deposit(50);
-        machine.select();
+        String[] selections = {"water", "pepsi", "coke", "gatorade"};
+        PopMachine machine = new PopMachine(selections, 150);
+        //money will stay in machine as the user has not deposited enough
+        /* machine.deposit(100);
+        machine.select(0); */
         
         //user will now deposit enough for one drink and select, leaving 0 balance left
-        machine.deposit(100);
-        machine.select();
+        /* machine.deposit(150);
+        machine.select(1); */
+
+        //user will now deposit enough money for one drink, but will choose the wrong number. No money will be refunded, as they can choose another number.
+        machine.deposit(150);
+        machine.select(-1);
+        machine.select(5);
+        machine.select(2);
 
         //user will now deposit an amount and refund the money
-        machine.deposit(50);
-        machine.refund();
-
-        PopMachine pepsi = new PopMachine("pepsi");
-        pepsi.deposit(150);
-        pepsi.select();
-
-        System.out.println(pepsi);
+        /* machine.deposit(50);
+        machine.refund(); */
    } 
 }
 
