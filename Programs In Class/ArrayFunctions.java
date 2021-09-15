@@ -13,8 +13,18 @@
     the value of the smallest element in the given array. You may
     assume the array is nonempty. Test your implementation in main().
  */
+import java.util.Random;
 
 public class ArrayFunctions {
+    //job is the randomly fill an array with numbers
+    public static void randomFill(int[] data, int cap) {
+        Random gen = new Random();
+        for (int i = 0; i < data.length; i++){
+            data[i] = gen.nextInt(cap);
+        }
+    }
+
+
     public static int linearSearch(int[] data, int target) {
         // return first location with target or -1 if not found
         for (int i = 0; i < data.length; i++) {
@@ -87,5 +97,9 @@ public class ArrayFunctions {
         display(nums);
         insertionSort(nums);
         display(nums);
+        int[] manyNums = new int[100];
+        randomFill(manyNums, 1000);
+        insertionSort(manyNums);
+        display(manyNums);
     }
 }
