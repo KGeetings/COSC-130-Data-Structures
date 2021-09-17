@@ -76,6 +76,23 @@ public class ArrayFunctions {
         }
     }
 
+    public static int binarySearch(int data[], int target) {
+        int left = 0;
+        int right = data.length - 1;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if ( target == data[mid]) {
+                return mid;
+            } else if (target < data[mid]) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+            
+        }
+        return -1;
+    }
+
     public static void display(int[] data) {
         for (int num: data) {
             System.out.print(num + " ");
@@ -96,9 +113,14 @@ public class ArrayFunctions {
         display(nums);
         insertionSort(nums);
         display(nums);
+        System.out.println("Search for 1: " + binarySearch(nums, 1));
         int[] manyNums = new int[100];
         randomFill(manyNums, 1000);
         insertionSort(manyNums);
         display(manyNums);
+        for (int x: manyNums) {
+            System.out.println("Search for " + x + ": " + binarySearch(manyNums,x));
+        }
+
     }
 }
