@@ -16,7 +16,7 @@
 import java.util.Random;
 
 public class ArrayFunctions {
-    //job is the randomly fill an array with numbers
+    //job is to randomly fill an array with numbers
     public static void randomFill(int[] data, int cap) {
         Random gen = new Random();
         for (int i = 0; i < data.length; i++){
@@ -121,6 +121,7 @@ public class ArrayFunctions {
         for (int x: manyNums) {
             System.out.println("Search for " + x + ": " + binarySearch(manyNums,x));
         }
-
+        int[] nums2 = {2,5,7,10,22,31,34,40};
+        System.out.println(binarySearch(nums2,1));
     }
 }
