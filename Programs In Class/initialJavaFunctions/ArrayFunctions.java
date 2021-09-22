@@ -1,3 +1,4 @@
+package initialJavaFunctions;
 /* Add these two functions to ArrayFunctions.java and test both of them in main():
 
     Write a linearSearch(String[] words, String target) to work with strings instead of integers.  

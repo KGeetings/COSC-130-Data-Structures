@@ -1,3 +1,4 @@
+package initialJavaFunctions;
 public class SimplePopMachine {
     //fields (variables stored in each object)
     private String drink;

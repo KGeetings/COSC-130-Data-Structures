@@ -1,3 +1,4 @@
+package initialJavaFunctions;
 public class StringFunctions {
     public static int count(String s, String target) {
         int count = 0;

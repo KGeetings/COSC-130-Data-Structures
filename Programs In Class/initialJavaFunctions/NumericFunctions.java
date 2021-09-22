@@ -1,3 +1,4 @@
+package initialJavaFunctions;
 public class NumericFunctions {
 
    public static int factorial(int n) {
