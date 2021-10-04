@@ -1,4 +1,5 @@
 package intStack;
+
 import java.util.EmptyStackException;
 public class IntArrayStack implements IntStack{
     //complications:
