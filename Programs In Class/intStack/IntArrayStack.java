@@ -21,6 +21,14 @@ public class IntArrayStack implements IntStack{
         }
         data[++top] = value;
     }
+    
+    /* Modify the pop() method of Listing 3.2 to reduce the array length by
+    half if the number of elements in the stack is less than or equal to onefourth
+    the current length of the array (but do not let the array have a size
+    smaller than 10). Include an output statement in the resize() method
+    to report each resizing, and then test your modification by pushing and
+    then popping a large number of elements. */
+
     public int pop() {
         if (isEmpty()) {
             throw new EmptyStackException();
