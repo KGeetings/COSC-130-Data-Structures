@@ -33,6 +33,10 @@ public class IntArrayStack implements IntStack{
         if (isEmpty()) {
             throw new EmptyStackException();
         }
+        if (size() <= (data.length * 0.25) && ((size() * 0.5) >= DEFAULT_CAPACITY) ) {
+            //Using some classic Narrowing Type Casting to convert what might be a double, into an int
+            resize((int)(0.5 * data.length));
+        }
         return data[top--];
     }
     public int size() {
@@ -52,7 +56,7 @@ public class IntArrayStack implements IntStack{
         System.out.println("Resizing to " + newCapacity);
         int[] newData = new int[newCapacity];
         // copy elements
-        for (int i = 0; i < data.length; i++) {
+        for (int i = 0; i < data.length && i < newCapacity; i++) {
             newData[i] = data[i];
         }
         data = newData;
@@ -61,18 +65,19 @@ public class IntArrayStack implements IntStack{
     public static void main(String [] args) {
         IntStack s = new IntArrayStack();
         //s.pop();
-        s.push(12);
+        /* s.push(12);
         s.push(7);
         System.out.println("Peek: " + s.peek());
         s.push(92);
         s.push(35);
         System.out.println("Size: " + s.size());
-        System.out.println("First pop: " + s.pop());
-        for (int i = 0; i <100; i++) {
+        System.out.println("First pop: " + s.pop()); */
+        for (int i = 0; i <200; i++) {
             s.push(i);
         }
         while(!s.isEmpty()) {
             System.out.println(s.pop());
+            //System.out.println("S.size is :" + s.size());
         }
     }
 }
