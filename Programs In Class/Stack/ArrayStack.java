@@ -57,11 +57,13 @@ public class ArrayStack<E> implements Stack<E> {
    public static void main(String[] args) {
       Stack<String> words = new ArrayStack<>();
       String[] examples = {"antelope", "pumpkin", "chocolate", "silence"}; 
+      
       for (String word: examples) {
          words.push(word);
       }
+
       System.out.println(words.peek());
-      while (!words.isEmpty()){
+      while (!words.isEmpty()) {
          System.out.println(words.pop());
       }
    }

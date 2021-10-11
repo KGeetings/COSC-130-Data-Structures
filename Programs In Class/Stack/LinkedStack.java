@@ -34,9 +34,11 @@ public class LinkedStack<E> implements Stack<E> {
     public static void main(String[] args) {
        Stack<String> words = new LinkedStack<>();
        String[] examples = {"antelope", "pumpkin", "chocolate", "silence"}; 
+       
        for (String word: examples) {
           words.push(word);
        }
+       
        Stack<Integer> numbers = new LinkedStack<>();
        for (int i = 10; i < 20; i++) {
           numbers.push(i*i);
