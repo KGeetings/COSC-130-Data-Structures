@@ -10,6 +10,7 @@ public class ArrayStack<E> implements Stack<E> {
    public ArrayStack(int capacity) {
       data = new Object[capacity];
    }
+
    public ArrayStack() {
       this(DEFAULT_CAPACITY);
    }
@@ -20,6 +21,7 @@ public class ArrayStack<E> implements Stack<E> {
       }
       data[++top] = item;
    }
+
    @SuppressWarnings("unchecked")
    public E pop() {
       if (isEmpty()) {
@@ -27,12 +29,15 @@ public class ArrayStack<E> implements Stack<E> {
       }
       return (E) data[top--];
    }
+
    public boolean isEmpty() {
       return size() == 0;
    }
+
    public int size() {
       return top + 1;
    }
+
    @SuppressWarnings("unchecked")
    public E peek() {
       if (isEmpty()) {
@@ -40,6 +45,7 @@ public class ArrayStack<E> implements Stack<E> {
       }
       return (E) data[top];
    }
+   
    private void resize(int newCapacity) {
       Object[] newdata = new Object[newCapacity];
       for (int i = 0; i < top; i++) {

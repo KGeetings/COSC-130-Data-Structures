@@ -5,18 +5,23 @@ public class LinkedStack<E> implements Stack<E> {
     public void push(E item) {
     
     }
+
     public E pop() {
        return null;
     }
+
     public boolean isEmpty() {
        return true;
     }
+
     public int size() {
        return 0;
     }
+
     public E peek() {
        return null;
     }
+
     private static class Node<T> {
        private T data;
        private Node next;
@@ -25,6 +30,7 @@ public class LinkedStack<E> implements Stack<E> {
           this.next = next;
        }
     }
+    
     public static void main(String[] args) {
        Stack<String> words = new LinkedStack<>();
        String[] examples = {"antelope", "pumpkin", "chocolate", "silence"}; 
