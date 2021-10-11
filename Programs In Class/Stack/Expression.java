@@ -19,7 +19,8 @@ public class Expression {
     }
 
     private static boolean isOperator(String token) {
-        return rank(token) > 0;
+        //return rank(token) > 0;
+        return false;
     }
 
     public static void main(String[] args) {
