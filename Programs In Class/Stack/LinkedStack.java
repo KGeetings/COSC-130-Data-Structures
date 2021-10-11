@@ -1,29 +1,39 @@
-/* package Stack;
+package Stack;
 
 public class LinkedStack<E> implements Stack<E> {
-    void push(E element) {
-        return E;
+    private Node<E> top;
+    public void push(E item) {
+    
     }
-    E pop() {
-        return E;
+    public E pop() {
+       return null;
     }
-    boolean isEmpty() {
-        return false;
+    public boolean isEmpty() {
+       return true;
     }
-    int size() {
-        return -1;
+    public int size() {
+       return 0;
     }
-    E peek() {
-        return -1;
+    public E peek() {
+       return null;
     }
-
-
-
-
-
+    private static class Node<T> {
+       private T data;
+       private Node next;
+       private Node(T data, Node next) {
+          this.data = data;
+          this.next = next;
+       }
+    }
     public static void main(String[] args) {
-        Stack<String> words = new LinkedStack<>();
-        
+       Stack<String> words = new LinkedStack<>();
+       String[] examples = {"antelope", "pumpkin", "chocolate", "silence"}; 
+       for (String word: examples) {
+          words.push(word);
+       }
+       Stack<Integer> numbers = new LinkedStack<>();
+       for (int i = 10; i < 20; i++) {
+          numbers.push(i*i);
+       }
     }
-}
- */
+ }
