@@ -6,7 +6,7 @@ public class LinkedStack<E> implements Stack<E> {
    private Node<E> top;
    private int size;
 
-   @SuppressWarnings("unchecked")
+   @SuppressWarnings({"unchecked","rawtypes"})
    public void push(E item) {
       top = new Node(item, top);
       size++;
@@ -38,6 +38,7 @@ public class LinkedStack<E> implements Stack<E> {
       return top.data;
    }
 
+   @SuppressWarnings("rawtypes")
    private static class Node<T> {
       private T data;
       private Node next;
@@ -54,6 +55,10 @@ public class LinkedStack<E> implements Stack<E> {
       
       for (String word: examples) {
          words.push(word);
+      }
+
+      while (!words.isEmpty()) {
+         System.out.println(words.pop());
       }
 
       Stack<Integer> numbers = new LinkedStack<>();
