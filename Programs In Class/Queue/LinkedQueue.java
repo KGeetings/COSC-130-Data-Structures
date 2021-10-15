@@ -1,18 +1,39 @@
 package Queue;
 
+import java.util.NoSuchElementException;
+
 public class LinkedQueue<E> implements Queue<E> {
     private int size;
+    private Node<E> front;
+    private Node<E> rear;
+
 
     public void enqueue(E item) {
-        
+        //New node
+        Node<E> newNode = new Node<>(item);
+        //2 cases: empty or not
+        if (isEmpty()) {
+            front = newNode;
+        } else {
+            rear.next = newNode;
+        }
+        //update the rear and size
+        rear = newNode;
+        size++;
     }
 
     public E dequeue() {
+        /* if (isEmpty()) {
+            throw new NoSuchElementException();
+        } */
         return null;
     }
 
     public E peek() {
-        return null;
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        return front.data;
     }
 
     public int size() {
