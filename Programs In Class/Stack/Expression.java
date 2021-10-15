@@ -7,6 +7,7 @@ public class Expression {
     public static final String DIVIDE = "/";
     public static final String TIMES = "*";
 
+    // Infix to Postfix
     public static String toPostfix(String expr) {
         StringBuilder result = new StringBuilder();
         Stack<String> operators = new ArrayStack<>();
