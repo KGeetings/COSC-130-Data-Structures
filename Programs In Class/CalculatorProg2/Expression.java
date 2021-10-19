@@ -1,5 +1,7 @@
 package CalculatorProg2;
 
+import java.time.chrono.MinguoChronology;
+
 /* 
 Finish the applyOperator() and evalPostfix() functions in the Expression class to make the calculator work:
    applyOperator() is described in exercise #7 in 4.4
@@ -12,6 +14,7 @@ You will need to make two small changes in the Calculator class (one of them is 
 and most of the other changes will be in the Expression class.  If you try this, do not make Expression generic; 
 just change it to use doubles.  Extra credit will only be given if the main part of the assignment is essentially correct.
  */
+
 public class Expression {
    public static final String SPACE = " ";
    public static final String PLUS = "+";
@@ -25,12 +28,21 @@ public class Expression {
    
    public static int evalPostfix(String expr) {
       // TODO you write this
+
       return 0;
    }
    
    private static int applyOperator(String operator, int op1, int op2) {
       // TODO fill in the switch cases
       switch (operator) {
+         case TIMES:
+            return op1 * op2;
+         case DIVIDE:
+            return op1 / op2;
+         case PLUS:
+            return op1 + op2;
+         case MINUS:
+            return op1 - op2;
          default:
             return 0;
       }
