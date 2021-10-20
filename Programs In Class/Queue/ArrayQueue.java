@@ -29,6 +29,7 @@ public class ArrayQueue<E> implements Queue<E>{
         else {
             rear = (rear + 1) % capacity;
             data[rear] = item;
+            size++;
         }
         return;
     }
@@ -40,11 +41,12 @@ public class ArrayQueue<E> implements Queue<E>{
         return null;
     }
 
+    @SuppressWarnings("unchecked")
     public E peek() {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
-        return null;
+        return (E) data[front];
     }
 
     public int size() {
@@ -57,13 +59,13 @@ public class ArrayQueue<E> implements Queue<E>{
 
     public static void main(String[] args) {
         Queue<Integer> q = new ArrayQueue<>();
+        /* q.enqueue(2);
+        System.out.println("Peek " + q.peek()); */
         for (int i = 0; i <= 20; i++) {
             q.enqueue(i);
+            //System.out.println("Peek " + q.peek());
         }
-        /* q.enqueue(2);
-        q.enqueue(12);
-        q.enqueue(6);
-        q.enqueue(27); */
+
         System.out.println("Dequeue " + q.dequeue());
         System.out.println("Size " + q.size());
      } 
