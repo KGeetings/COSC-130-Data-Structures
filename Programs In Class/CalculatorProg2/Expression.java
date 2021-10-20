@@ -32,10 +32,10 @@ public class Expression {
          if (!isOperator(token)) {
             intStack.push(Integer.parseInt(token));
          }
-         else {
+         else if (isOperator(token)) {
             int op1 = intStack.pop();
             int op2 = intStack.pop();
-            result += (applyOperator(token, op1, op2));
+            result = applyOperator(token, op1, op2);
             intStack.push(result);
          }
       }
