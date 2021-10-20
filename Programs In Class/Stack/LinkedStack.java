@@ -12,7 +12,6 @@ public class LinkedStack<E> implements Stack<E> {
       size++;
    }
 
-   @SuppressWarnings("unchecked")
    public E pop() {
       if (isEmpty()) {
          throw new EmptyStackException();
@@ -38,12 +37,11 @@ public class LinkedStack<E> implements Stack<E> {
       return top.data;
    }
 
-   @SuppressWarnings("rawtypes")
    private static class Node<T> {
       private T data;
-      private Node next;
+      private Node<T> next;
 
-      private Node(T data, Node next) {
+      private Node(T data, Node<T> next) {
          this.data = data;
          this.next = next;
       }
