@@ -8,7 +8,7 @@ public class ArrayQueue<E> implements Queue<E>{
     private int capacity;
     private int front;
     private int rear = -1;
-    private static final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 3;
 
     public ArrayQueue(int capacity) {
         data = new Object[capacity];
@@ -20,13 +20,15 @@ public class ArrayQueue<E> implements Queue<E>{
     }
 
     public void enqueue(E item) {
-        if (capacity == rear) {
-            rear = (rear + 1) % capacity;
+        if (capacity == rear + 1) {
+            //this is where it might possibly overwrite needed numbers in the queue, almost need to expand data[]
+            front += 1;
+            data[(rear + 1) % capacity] = item;
             return;
         }
         else {
-            data[rear] = data;
-            rear++;
+            rear = (rear + 1) % capacity;
+            data[rear] = item;
         }
         return;
     }
@@ -55,10 +57,13 @@ public class ArrayQueue<E> implements Queue<E>{
 
     public static void main(String[] args) {
         Queue<Integer> q = new ArrayQueue<>();
-        q.enqueue(2);
+        for (int i = 0; i <= 20; i++) {
+            q.enqueue(i);
+        }
+        /* q.enqueue(2);
         q.enqueue(12);
         q.enqueue(6);
-        q.enqueue(27);
+        q.enqueue(27); */
         System.out.println("Dequeue " + q.dequeue());
         System.out.println("Size " + q.size());
      } 
