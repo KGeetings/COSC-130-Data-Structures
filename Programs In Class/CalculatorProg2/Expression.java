@@ -1,7 +1,5 @@
 package CalculatorProg2;
 
-import java.time.chrono.MinguoChronology;
-
 /* 
 Finish the applyOperator() and evalPostfix() functions in the Expression class to make the calculator work:
    applyOperator() is described in exercise #7 in 4.4
@@ -27,13 +25,25 @@ public class Expression {
    }
    
    public static int evalPostfix(String expr) {
-      // TODO you write this
-
-      return 0;
+      // you write this
+      int result = 0;
+      Stack<Integer> intStack = new ArrayStack<>();
+      for (String token: expr.split(SPACE)) {
+         if (!isOperator(token)) {
+            intStack.push(Integer.parseInt(token));
+         }
+         else {
+            int op1 = intStack.pop();
+            int op2 = intStack.pop();
+            result += (applyOperator(token, op1, op2));
+            intStack.push(result);
+         }
+      }
+      return result;
    }
    
    private static int applyOperator(String operator, int op1, int op2) {
-      // TODO fill in the switch cases
+      // fill in the switch cases
       switch (operator) {
          case TIMES:
             return op1 * op2;
@@ -87,5 +97,8 @@ public class Expression {
    public static void main(String[] args) {
       String expr = "3 * 2 + 1";
       System.out.println("Postfix: " + toPostfix(expr));
+      //String postFixExpr = "3 2 * 1 +";
+      //System.out.println("Eval Postfix: " + evalPostfix(postFixExpr));
+      System.out.println("Eval Postfix: " + eval(expr));
    }
 }
