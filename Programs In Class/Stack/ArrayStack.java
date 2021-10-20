@@ -22,6 +22,7 @@ public class ArrayStack<E> implements Stack<E> {
       data[++top] = item;
    }
 
+   //Suppress needed because we are going from Object to generic E
    @SuppressWarnings("unchecked")
    public E pop() {
       if (isEmpty()) {
