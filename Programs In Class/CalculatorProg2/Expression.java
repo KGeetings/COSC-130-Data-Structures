@@ -20,29 +20,29 @@ public class Expression {
    public static final String TIMES = "*";
    public static final String DIVIDE = "/";
    
-   public static int eval(String infix) {
+   public static double eval(String infix) {
       return evalPostfix(toPostfix(infix));
    }
    
-   public static int evalPostfix(String expr) {
+   public static double evalPostfix(String expr) {
       // you write this
-      int result = 0;
-      Stack<Integer> intStack = new ArrayStack<>();
+      double result = 0;
+      Stack<Double> doubleStack = new ArrayStack<>();
       for (String token: expr.split(SPACE)) {
          if (!isOperator(token)) {
-            intStack.push(Integer.parseInt(token));
+            doubleStack.push(Double.parseDouble(token));
          }
          else if (isOperator(token)) {
-            int op1 = intStack.pop();
-            int op2 = intStack.pop();
+            double op1 = doubleStack.pop();
+            double op2 = doubleStack.pop();
             result = applyOperator(token, op1, op2);
-            intStack.push(result);
+            doubleStack.push(result);
          }
       }
       return result;
    }
    
-   private static int applyOperator(String operator, int op1, int op2) {
+   private static double applyOperator(String operator, double op1, double op2) {
       // fill in the switch cases
       switch (operator) {
          case TIMES:
@@ -95,7 +95,7 @@ public class Expression {
    }
    
    public static void main(String[] args) {
-      String expr = "3 * 2 + 1";
+      String expr = "3.1 * 2 + 1.5";
       System.out.println("Postfix: " + toPostfix(expr));
       //String postFixExpr = "3 2 * 1 +";
       //System.out.println("Eval Postfix: " + evalPostfix(postFixExpr));

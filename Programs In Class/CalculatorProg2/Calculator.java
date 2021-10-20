@@ -1,6 +1,6 @@
 package CalculatorProg2;
 
-import java.awt.event.*;
+//import java.awt.event.*;
 
 public class Calculator extends javax.swing.JFrame {
 
@@ -13,7 +13,7 @@ public class Calculator extends javax.swing.JFrame {
         infix = new StringBuilder();
     }
 
-    @SuppressWarnings("unchecked")
+    //@SuppressWarnings("unchecked")
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
@@ -207,7 +207,7 @@ public class Calculator extends javax.swing.JFrame {
         jButtonDot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 // EXTRA CREDIT: uncomment this line to activate the "." key
-                // pressKey(".");
+                pressKey(".");
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -313,7 +313,7 @@ public class Calculator extends javax.swing.JFrame {
 
     private void equalsKey() {
         String expr = infix.toString();
-        int result = (!expr.equals("")) ? Expression.eval(expr) : 0;
+        double result = (!expr.equals("")) ? Expression.eval(expr) : 0;
         displayLabel.setText("" + result);
         infix = new StringBuilder("" + result);
         nextOperand = true;

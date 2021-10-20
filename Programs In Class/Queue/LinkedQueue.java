@@ -46,6 +46,7 @@ public class LinkedQueue<E> implements Queue<E> {
 
     private static class Node<T> {
         private T data;
+        @SuppressWarnings("unused")
         private Node<T> next;
 
         private Node(T data, Node<T> next) {
