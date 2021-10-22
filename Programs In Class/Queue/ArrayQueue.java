@@ -20,12 +20,9 @@ public class ArrayQueue<E> implements Queue<E>{
     }
 
     public void enqueue(E item) {
-        if (capacity == size() {
-            //this is where it might possibly overwrite needed numbers in the queue, almost need to expand data[]
+        //size()
+        if (capacity == size()) {
             resize(2 * capacity);
-            front += 1;
-            data[(rear + 1) % capacity] = item;
-            return;
         }
         else {
             rear = (rear + 1) % capacity;
@@ -58,13 +55,26 @@ public class ArrayQueue<E> implements Queue<E>{
         return size == 0;
     }
 
+    private void resize(int newCapacity) {
+        Object[] newdata = new Object[newCapacity];
+        int j = front;
+        for (int i = 0; i < size; i++) {
+            newdata[i] = data[j];
+            j = (j + 1) % capacity;
+        }
+        capacity = newCapacity;
+        front = 0;
+        rear = size() - 1;
+        data = newdata;
+     }
+
     public static void main(String[] args) {
         Queue<Integer> q = new ArrayQueue<>();
         /* q.enqueue(2);
         System.out.println("Peek " + q.peek()); */
         for (int i = 0; i <= 20; i++) {
             q.enqueue(i);
-            //System.out.println("Peek " + q.peek());
+            System.out.println("Peek " + q.peek());
         }
 
         System.out.println("Dequeue " + q.dequeue());
