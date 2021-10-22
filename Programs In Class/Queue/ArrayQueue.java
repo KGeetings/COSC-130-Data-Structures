@@ -20,8 +20,9 @@ public class ArrayQueue<E> implements Queue<E>{
     }
 
     public void enqueue(E item) {
-        if (capacity == rear + 1) {
+        if (capacity == size() {
             //this is where it might possibly overwrite needed numbers in the queue, almost need to expand data[]
+            resize(2 * capacity);
             front += 1;
             data[(rear + 1) % capacity] = item;
             return;
