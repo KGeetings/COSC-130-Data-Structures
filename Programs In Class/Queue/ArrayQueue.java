@@ -4,6 +4,7 @@ import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
 
 public class ArrayQueue<E> implements Queue<E>{
+    //All O(1), except resizing
     private Object[] data;
     private int size;
     private int capacity;
@@ -36,7 +37,8 @@ public class ArrayQueue<E> implements Queue<E>{
     @SuppressWarnings("unchecked")
     public E dequeue() {
         if (isEmpty()) {
-            throw new NoSuchElementException();
+            throw new EmptyStackException();
+            //throw new NoSuchElementException();
          }
          return (E) data[front--];
     }
