@@ -1,4 +1,4 @@
-/* package List;
+package List;
 
 public class ArrayListCoPilot<E> implements List<E> {
     private int size;
@@ -36,6 +36,7 @@ public class ArrayListCoPilot<E> implements List<E> {
         size++;
     }
 
+    @SuppressWarnings ("unchecked")
     public E get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
@@ -56,6 +57,7 @@ public class ArrayListCoPilot<E> implements List<E> {
         return size == 0;
     }
 
+    @SuppressWarnings ("unchecked")
     public E removeAt(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
@@ -68,6 +70,7 @@ public class ArrayListCoPilot<E> implements List<E> {
         return item;
     }
 
+    @SuppressWarnings ("unchecked")
     public E set(int index, E item) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
@@ -93,8 +96,8 @@ public class ArrayListCoPilot<E> implements List<E> {
         List<Integer> nums = new ArrayListCoPilot<>();
         nums.add(0,10);
         nums.add(0,20);
-        nums.get(0);
+        System.out.println("Nums get: " + nums.get(1));
+        System.out.println("Nums index of 10: " + nums.indexOf(10));
     }
 }
 
- */
