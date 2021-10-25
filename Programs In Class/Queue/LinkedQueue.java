@@ -27,14 +27,13 @@ public class LinkedQueue<E> implements Queue<E> {
             throw new NoSuchElementException();
         }
         //save the front
-        //E item = front.item;
+        E item = front.data;
         //update the front
         front = front.next;
         //update the size
         size--;
         //return the item
-        //return item;
-        return null;
+        return item;
     }
 
     public E peek() {
@@ -73,6 +72,7 @@ public class LinkedQueue<E> implements Queue<E> {
         q.enqueue(12);
         q.enqueue(6);
         q.enqueue(27);
+        System.out.println("Dequeue " + q.dequeue());
         System.out.println("Dequeue " + q.dequeue());
         System.out.println("Size " + q.size());
      }
