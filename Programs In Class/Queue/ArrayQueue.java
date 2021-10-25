@@ -1,5 +1,6 @@
 package Queue;
 
+import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
 
 public class ArrayQueue<E> implements Queue<E>{
@@ -32,11 +33,12 @@ public class ArrayQueue<E> implements Queue<E>{
         return;
     }
 
+    @SuppressWarnings("unchecked")
     public E dequeue() {
-        /* if (isEmpty()) {
+        if (isEmpty()) {
             throw new NoSuchElementException();
-        } */
-        return null;
+         }
+         return (E) data[front--];
     }
 
     @SuppressWarnings("unchecked")
