@@ -38,9 +38,15 @@ public class ArrayQueue<E> implements Queue<E>{
     public E dequeue() {
         if (isEmpty()) {
             throw new EmptyStackException();
-            //throw new NoSuchElementException();
-         }
-         return (E) data[front--];
+        }
+        E item = (E) data[front];
+        data[front] = null;
+        front = (front + 1) % capacity;
+        size--;
+        if (size() < capacity / 4) {
+            resize(capacity / 2);
+        }
+        return item;
     }
 
     @SuppressWarnings("unchecked")
@@ -78,9 +84,10 @@ public class ArrayQueue<E> implements Queue<E>{
         System.out.println("Peek " + q.peek()); */
         for (int i = 0; i <= 20; i++) {
             q.enqueue(i);
-            System.out.println("Peek " + q.peek());
+            //System.out.println("Peek " + q.peek());
         }
-
+        System.out.println("Dequeue " + q.dequeue());
+        System.out.println("Dequeue " + q.dequeue());
         System.out.println("Dequeue " + q.dequeue());
         System.out.println("Size " + q.size());
      } 

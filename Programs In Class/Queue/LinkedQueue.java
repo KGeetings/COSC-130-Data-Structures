@@ -23,9 +23,17 @@ public class LinkedQueue<E> implements Queue<E> {
     }
 
     public E dequeue() {
-        /* if (isEmpty()) {
+        if (isEmpty()) {
             throw new NoSuchElementException();
-        } */
+        }
+        //save the front
+        //E item = front.item;
+        //update the front
+        front = front.next;
+        //update the size
+        size--;
+        //return the item
+        //return item;
         return null;
     }
 
