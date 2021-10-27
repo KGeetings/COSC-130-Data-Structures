@@ -43,6 +43,7 @@ public class ArrayQueue<E> implements Queue<E>{
         data[front] = null;
         front = (front + 1) % capacity;
         size--;
+        //Shrink array if needed
         if (size() < capacity / 4) {
             resize(capacity / 2);
         }
