@@ -10,7 +10,7 @@ public class ArrayQueue<E> implements Queue<E>{
     private int capacity;
     private int front;
     private int rear = -1;
-    private static final int DEFAULT_CAPACITY = 3;
+    private static final int DEFAULT_CAPACITY = 5;
 
     public ArrayQueue(int capacity) {
         data = new Object[capacity];
@@ -80,15 +80,15 @@ public class ArrayQueue<E> implements Queue<E>{
 
     public static void main(String[] args) {
         Queue<Integer> q = new ArrayQueue<>();
-        /* q.enqueue(2);
-        System.out.println("Peek " + q.peek()); */
-        for (int i = 0; i <= 20; i++) {
-            q.enqueue(i);
-            //System.out.println("Peek " + q.peek());
-        }
+        q.enqueue(2);
+        q.enqueue(4);
+        q.enqueue(6);
+        System.out.println("Dequeue " + q.dequeue());
+        q.enqueue(8);
+        q.enqueue(10);
         System.out.println("Dequeue " + q.dequeue());
         System.out.println("Dequeue " + q.dequeue());
-        System.out.println("Dequeue " + q.dequeue());
-        System.out.println("Size " + q.size());
+        q.enqueue(12);
+        //System.out.println("Size " + q.size());
      } 
 }

@@ -67,12 +67,15 @@ public class LinkedQueue<E> implements Queue<E> {
 
     public static void main(String[] args) {
         Queue<Integer> q = new LinkedQueue<>();
-        q.enqueue(2);
-        q.enqueue(12);
-        q.enqueue(6);
-        q.enqueue(27);
-        System.out.println("Dequeue " + q.dequeue());
+        q.enqueue(10);
+        q.enqueue(20);
+        q.enqueue(30);
+        q.enqueue(40);
+        System.out.println("Peek " + q.peek());
+        q.enqueue(50);
         System.out.println("Dequeue " + q.dequeue());
         System.out.println("Size " + q.size());
+        System.out.println("Dequeue " + q.dequeue());
+        System.out.println("Dequeue " + q.dequeue());
      }
 }
