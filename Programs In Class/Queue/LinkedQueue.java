@@ -7,7 +7,6 @@ public class LinkedQueue<E> implements Queue<E> {
     private Node<E> front;
     private Node<E> rear;
 
-
     public void enqueue(E item) {
         //New node
         Node<E> newNode = new Node<>(item);
