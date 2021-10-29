@@ -48,11 +48,16 @@ public class ArrayList<E> implements List<E> {
     }
 
     public int indexOf(E item) {
+        for (int i = 0; i < size; i++) {
+            if (data[i].equals(item)) {
+                return i;
+            }
+        }
         return -1;
     }
 
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     public E removeAt(int index) {
@@ -96,5 +101,8 @@ public class ArrayList<E> implements List<E> {
         //get elements
         System.out.println(nums.get(0));
         System.out.println(nums.get(1));
+
+        //call indexOf 
+        System.out.println("Index of 3 is: " + nums.indexOf(3));
     }
 }

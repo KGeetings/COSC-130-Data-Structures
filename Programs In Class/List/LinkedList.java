@@ -1,6 +1,14 @@
 package List;
 
 public class LinkedList<E> implements List<E> {
+    private Node<E> head;
+    private Node<E> getNode(int index) {
+        Node<E> n = head;
+        for (int i = -1; i < index; i++) {
+            n = n.next;
+        }
+        return n;
+    }
     @SuppressWarnings("unused")
     private int size;
     @SuppressWarnings("unused")

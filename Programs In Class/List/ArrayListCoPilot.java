@@ -68,6 +68,7 @@ public class ArrayListCoPilot<E> implements List<E> {
         }
         size--;
         return item;
+        //big-O: O(n)
     }
 
     @SuppressWarnings ("unchecked")
@@ -96,6 +97,11 @@ public class ArrayListCoPilot<E> implements List<E> {
         List<Integer> nums = new ArrayListCoPilot<>();
         nums.add(0,10);
         nums.add(0,20);
+        //loop to add numbers from 30 to 100
+        for (int i = 30; i <= 100; i++) {
+            nums.add(i);
+        }
+
         System.out.println("Nums get: " + nums.get(1));
         System.out.println("Nums index of 10: " + nums.indexOf(10));
     }
