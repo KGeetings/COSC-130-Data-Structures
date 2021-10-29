@@ -61,7 +61,25 @@ public class ArrayList<E> implements List<E> {
     }
 
     public E removeAt(int index) {
-        return null;
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        E item = get(index);
+        // shift elements to the left of index over one
+        for (int i = index; i < size - 1; i++) {
+            data[i] = data[i + 1];
+        }
+        // decrement size
+        size--;
+        // shift elements to the left of size over one
+        for (int i = size; i < capacity; i++) {
+            data[i] = null;
+        }
+        // shrink array if necessary
+        if (size > 0 && size == capacity / 4) {
+            resize(capacity / 2);
+        }
+        return item;
     }
 
     @SuppressWarnings("unchecked")
