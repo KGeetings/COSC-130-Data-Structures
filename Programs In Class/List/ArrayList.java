@@ -122,5 +122,24 @@ public class ArrayList<E> implements List<E> {
 
         //call indexOf 
         System.out.println("Index of 3 is: " + nums.indexOf(3));
+
+        //List items from 6.1 #2
+        List<Integer> items = new ArrayList<>();
+        items.add(1);
+        items.add(7);
+        items.add(2);
+        items.add(4);
+        items.add(1);
+        items.add(8);
+        items.add(9);
+        items.add(7);
+        // breakpoint
+        System.out.println("size " + items.size());
+        System.out.println("get " + items.get(3));
+        System.out.println("indexOf " + items.indexOf(7));
+        System.out.println("removeAt " + items.removeAt(5));
+        items.add(0,3);
+        items.add(2,5);
+        System.out.println("removeAt " + items.removeAt(1));
     }
 }
