@@ -1,7 +1,79 @@
 package List;
 
 public class LinkedList<E> implements List<E> {
-    private Node<E> head;
+    private Node<E> head = new Node<> (null);       // dummy node
+    private int size;
+
+    private static class Node<T> {
+        private T data;
+        private Node<T> prev, next;     // double links
+
+        public Node(T data) {
+            this.data = data;
+        }
+    }
+
+    public void add(E item) {
+
+    }
+
+    public void add(int index, E item) {
+    
+    }
+
+    public E get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        //one option is:
+        //E result = getNode(index).data;
+        //return result;
+
+        //another option is:
+        //Node<E> node = getNode(index);
+        //return node.data;
+
+        return getNode(index).data;
+    }
+
+
+    public int indexOf(E item) {
+        return -1;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public E removeAt(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        return null;
+    }
+
+    public E set(int index, E item) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node<E> node = getNode(index);
+        E oldValue = node.data;
+        node.data = item;
+        return oldValue;
+        //check index
+        //get node @ index
+        //save old value
+        //1.
+        //if there's a next, 2
+        //size
+        
+    }
+
+    public int size() {
+        return size;
+    }
+
     private Node<E> getNode(int index) {
         Node<E> n = head;
         for (int i = -1; i < index; i++) {
@@ -9,64 +81,39 @@ public class LinkedList<E> implements List<E> {
         }
         return n;
     }
-    @SuppressWarnings("unused")
-    private int size;
-    @SuppressWarnings("unused")
-    private Node<E> front;
-    @SuppressWarnings("unused")
-    private Node<E> rear;
-
-    public void add(E item) {
-
-    }
-
-    public void add(int index, E item) {
-
-    }
-
-    public E get(int index) {
-        return null;
-    }
-
-    public int indexOf(E item) {
-        return -1;
-    }
-
-    public boolean isEmpty() {
-        return false;
-    }
-
-    public E removeAt(int index) {
-        return null;
-    }
-
-    public E set(int index, E item) {
-        return null;
-    }
-
-    public int size() {
-        return -1;
-    }
-
-    private static class Node<T> {
-        @SuppressWarnings("unused")
-        private T data;
-        @SuppressWarnings("unused")
-        private Node<T> next;
-
-        private Node(T data, Node<T> next) {
-            this.data = data;
-            this.next = next;
-        }
-
-        private Node(T data) {
-            this(data, null);
-        }
-    }
 
     public static void main(String[] args) {
         List<Integer> nums = new LinkedList<>();
-        nums.add(0,10);
-        nums.add(0,20);
+        //add elements
+        nums.add(1);
+        nums.add(2);
+        nums.add(3);
+        nums.add(4);
+
+        //get elements
+        System.out.println(nums.get(0));
+        System.out.println(nums.get(1));
+
+        //call indexOf 
+        System.out.println("Index of 3 is: " + nums.indexOf(3));
+
+        //List items from 6.1 #2
+        List<Integer> items = new ArrayList<>();
+        items.add(1);
+        items.add(7);
+        items.add(2);
+        items.add(4);
+        items.add(1);
+        items.add(8);
+        items.add(9);
+        items.add(7);
+        // breakpoint
+        System.out.println("size " + items.size());
+        System.out.println("get " + items.get(3));
+        System.out.println("indexOf " + items.indexOf(7));
+        System.out.println("removeAt " + items.removeAt(5));
+        items.add(0,3);
+        items.add(2,5);
+        System.out.println("removeAt " + items.removeAt(1));
     }
 }
