@@ -17,9 +17,7 @@ public class ArrayList<E> implements List<E> {
 
     public void add(E item) {
         add(size, item);
-        //best case: O(1)
-        //worst case: O(n)
-        //average case: O(n)
+        //average case: O(1)
     }
 
     public void add(int index, E item) {
@@ -37,6 +35,9 @@ public class ArrayList<E> implements List<E> {
         data[index] = item;
         // increment size
         size++;
+        //best case: O(1)
+        //worst case: O(n)
+        //average case: O(n)
     }
 
     @SuppressWarnings("unchecked")
@@ -45,6 +46,7 @@ public class ArrayList<E> implements List<E> {
             throw new IndexOutOfBoundsException();
         }
         return (E) data[index];
+        //average case: O(1)
     }
 
     public int indexOf(E item) {
@@ -54,10 +56,12 @@ public class ArrayList<E> implements List<E> {
             }
         }
         return -1;
+        //average case: O(n)
     }
 
     public boolean isEmpty() {
         return size == 0;
+        //average case: O(1)
     }
 
     public E removeAt(int index) {
@@ -80,6 +84,7 @@ public class ArrayList<E> implements List<E> {
             resize(capacity / 2);
         }
         return item;
+        //average case: O(n)
     }
 
     @SuppressWarnings("unchecked")
@@ -93,10 +98,12 @@ public class ArrayList<E> implements List<E> {
         data[index] = item;
         // return old value
         return oldItem;
+        //average case: O(1)
     }
 
     public int size() {
         return size;
+        //average case: O(1)
     }
 
     private void resize(int newCapacity) {

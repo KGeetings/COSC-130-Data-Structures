@@ -1,17 +1,17 @@
 package List;
 
-public class ArrayListCoPilot<E> implements List<E> {
+public class ArrayListCopy<E> implements List<E> {
     private int size;
     private int capacity;
     private Object[] data;
     private static final int DEFAULT_CAPACITY = 10;
     
-    public ArrayListCoPilot(int capacity) {
+    public ArrayListCopy(int capacity) {
         data = new Object[capacity];
         this.capacity = capacity;
     }
 
-    public ArrayListCoPilot() {
+    public ArrayListCopy() {
         this(DEFAULT_CAPACITY);
     }
 
@@ -94,7 +94,7 @@ public class ArrayListCoPilot<E> implements List<E> {
     }
     
     public static void main(String[] args) {
-        List<Integer> nums = new ArrayListCoPilot<>();
+        List<Integer> nums = new ArrayListCopy<>();
         nums.add(0,10);
         nums.add(0,20);
         //loop to add numbers from 30 to 100
