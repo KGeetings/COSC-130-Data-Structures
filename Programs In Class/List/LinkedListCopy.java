@@ -20,6 +20,7 @@ public class LinkedListCopy<E> implements List<E> {
         head.next.prev = n;
         head.next = n;
         size++;
+        //average case: O(1)
     }
 
     public void add(int index, E item) {
@@ -30,6 +31,7 @@ public class LinkedListCopy<E> implements List<E> {
         prev.next.prev = n;
         prev.next = n;
         size++;
+        //average case: O(1)
     }
 
     public E get(int index) {
@@ -37,6 +39,7 @@ public class LinkedListCopy<E> implements List<E> {
             throw new IndexOutOfBoundsException();
         }
         return getNode(index).data;
+        //average case: O(1)
     }
 
 
@@ -49,6 +52,7 @@ public class LinkedListCopy<E> implements List<E> {
             n = n.next;
         }
         return -1;
+        //average case: O(n)
     }
 
     public boolean isEmpty() {
@@ -64,6 +68,7 @@ public class LinkedListCopy<E> implements List<E> {
         n.next.prev = n.prev;
         size--;
         return n.data;
+        //average case: O(1)
     }
 
     public E set(int index, E item) {
@@ -74,6 +79,7 @@ public class LinkedListCopy<E> implements List<E> {
         E old = n.data;
         n.data = item;
         return old;
+        //average case: O(1)
     }
 
     public int size() {
@@ -86,11 +92,27 @@ public class LinkedListCopy<E> implements List<E> {
             n = n.next;
         }
         return n;
+        //average case: O(n)
     }
 
     public static void main(String[] args) {
         List<Integer> nums = new LinkedListCopy<>();
         nums.add(0,10);
         nums.add(0,20);
+
+        for (int i = 0; i < nums.size(); i++) {
+            System.out.println(nums.get(i));
+            }
+            //average case: O(n)
+        
+        while (!nums.isEmpty()) {
+            System.out.println(nums.removeAt(0));
+            }
+            //average case: O(n^2)
+        
+        while (!nums.isEmpty()) {
+            System.out.println(nums.removeAt(nums.size() - 1));
+            }
+            //average case: O(n)
     }
 }
