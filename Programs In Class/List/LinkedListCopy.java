@@ -14,24 +14,26 @@ public class LinkedListCopy<E> implements List<E> {
     }
 
     public void add(E item) {
-        Node<E> n = new Node<>(item);
-        n.prev = head;
-        n.next = head.next;
-        head.next.prev = n;
-        head.next = n;
+        Node<E> newNode = new Node<>(item);
+        newNode.next = head.next;
+        newNode.prev = head;
+        head.next.prev = newNode;
+        head.next = newNode;
         size++;
-        //average case: O(1)
     }
 
     public void add(int index, E item) {
-        Node<E> n = new Node<>(item);
-        Node<E> prev = getNode(index - 1);
-        n.prev = prev;
-        n.next = prev.next;
-        prev.next.prev = n;
-        prev.next = n;
+        if (index < 0 || index > size)
+            throw new IndexOutOfBoundsException();
+        Node<E> newNode = new Node<>(item);
+        Node<E> curr = head;
+        for (int i = 0; i < index; i++)
+            curr = curr.next;
+        newNode.next = curr.next;
+        newNode.prev = curr;
+        curr.next.prev = newNode;
+        curr.next = newNode;
         size++;
-        //average case: O(1)
     }
 
     public E get(int index) {
@@ -63,12 +65,18 @@ public class LinkedListCopy<E> implements List<E> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
-        Node<E> n = getNode(index);
-        n.prev.next = n.next;
-        n.next.prev = n.prev;
+        Node<E> node = getNode(index);
+        E oldValue = node.data;
+        Node<E> prev = node.prev;
+        Node<E> next = node.next;
+        prev.next = next;
+        if (next != null) {
+            next.prev = prev;
+        }
+        node.prev = null;
+        node.next = null;
         size--;
-        return n.data;
-        //average case: O(1)
+        return oldValue;
     }
 
     public E set(int index, E item) {
@@ -97,22 +105,36 @@ public class LinkedListCopy<E> implements List<E> {
 
     public static void main(String[] args) {
         List<Integer> nums = new LinkedListCopy<>();
-        nums.add(0,10);
-        nums.add(0,20);
+        //add elements
+        nums.add(1);
+        nums.add(2);
+        nums.add(3);
+        nums.add(4);
 
-        for (int i = 0; i < nums.size(); i++) {
-            System.out.println(nums.get(i));
-            }
-            //average case: O(n)
-        
-        while (!nums.isEmpty()) {
-            System.out.println(nums.removeAt(0));
-            }
-            //average case: O(n^2)
-        
-        while (!nums.isEmpty()) {
-            System.out.println(nums.removeAt(nums.size() - 1));
-            }
-            //average case: O(n)
+        //get elements
+        System.out.println(nums.get(0));
+        System.out.println(nums.get(1));
+
+        //call indexOf 
+        System.out.println("Index of 3 is: " + nums.indexOf(3));
+
+        //List items from 6.1 #2
+        List<Integer> items = new LinkedListCopy<>();
+        items.add(1);
+        items.add(7);
+        items.add(2);
+        items.add(4);
+        items.add(1);
+        items.add(8);
+        items.add(9);
+        items.add(7);
+        // breakpoint
+        System.out.println("size " + items.size());
+        System.out.println("get " + items.get(3));
+        System.out.println("indexOf " + items.indexOf(7));
+        System.out.println("removeAt " + items.removeAt(5));
+        items.add(0,3);
+        items.add(2,5);
+        System.out.println("removeAt " + items.removeAt(1));
     }
 }

@@ -49,8 +49,19 @@ public class LinkedList<E> implements List<E> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
-
-        return null;
+        Node<E> node = getNode(index);
+        E oldValue = node.data;
+        Node<E> prev = node.prev;
+        Node<E> next = node.next;
+        prev.next = next;
+        if (next != null) {
+            next.prev = prev;
+        }
+        node.prev = null;
+        node.next = null;
+        size--;
+        return oldValue;
+        //not on test
     }
 
     public E set(int index, E item) {
@@ -61,13 +72,6 @@ public class LinkedList<E> implements List<E> {
         E oldValue = node.data;
         node.data = item;
         return oldValue;
-        //check index
-        //get node @ index
-        //save old value
-        //1.
-        //if there's a next, 2
-        //size
-        
     }
 
     public int size() {
@@ -98,7 +102,7 @@ public class LinkedList<E> implements List<E> {
         System.out.println("Index of 3 is: " + nums.indexOf(3));
 
         //List items from 6.1 #2
-        List<Integer> items = new ArrayList<>();
+        List<Integer> items = new LinkedList<>();
         items.add(1);
         items.add(7);
         items.add(2);
