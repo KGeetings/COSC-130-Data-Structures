@@ -24,11 +24,8 @@ public class LinkedList<E> implements List<E> {
 
         // add new node before specified node
         Node<E> newNode = new Node<>(item);
-        Node<E> current = head;
         // find the node at index
-        for (int i = 0; i < index; i++)
-            current = current.next;
-
+        Node<E> current = getNode(index - 1);
         // insert new node between current and current.next
         newNode.next = current.next;
         newNode.prev = current;
@@ -36,6 +33,9 @@ public class LinkedList<E> implements List<E> {
         // if new node is not the last node, update next node's prev reference
         if (newNode.next != null)
             newNode.next.prev = newNode;
+        // set nodes to null to avoid memory leaks but not sure if it's necessary as it's local?
+        //newNode = null;
+        //current = null;
         // update size
         size++;
     }
