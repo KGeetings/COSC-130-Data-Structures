@@ -14,11 +14,24 @@ public class LinkedList<E> implements List<E> {
     }
 
     public void add(E item) {
-
+        add(size, item);
     }
 
     public void add(int index, E item) {
-    
+        if (index < 0 || index > size)
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+
+        Node<E> newNode = new Node<>(item);
+        Node<E> curr = head;
+        for (int i = 0; i < index; i++)
+            curr = curr.next;
+
+        newNode.next = curr.next;
+        newNode.prev = curr;
+        curr.next = newNode;
+        if (newNode.next != null)
+            newNode.next.prev = newNode;
+        size++;
     }
 
     public E get(int index) {
