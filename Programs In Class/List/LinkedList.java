@@ -18,19 +18,25 @@ public class LinkedList<E> implements List<E> {
     }
 
     public void add(int index, E item) {
+        // added a more usefull error message in my opinion
         if (index < 0 || index > size)
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
 
+        // add new node before specified node
         Node<E> newNode = new Node<>(item);
-        Node<E> curr = head;
+        Node<E> current = head;
+        // find the node at index
         for (int i = 0; i < index; i++)
-            curr = curr.next;
+            current = current.next;
 
-        newNode.next = curr.next;
-        newNode.prev = curr;
-        curr.next = newNode;
+        // insert new node between current and current.next
+        newNode.next = current.next;
+        newNode.prev = current;
+        current.next = newNode;
+        // if new node is not the last node, update next node's prev reference
         if (newNode.next != null)
             newNode.next.prev = newNode;
+        // update size
         size++;
     }
 
@@ -38,19 +44,25 @@ public class LinkedList<E> implements List<E> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
-        //one option is:
-        //E result = getNode(index).data;
-        //return result;
+        // one option is:
+        // E result = getNode(index).data;
+        // return result;
 
-        //another option is:
-        //Node<E> node = getNode(index);
-        //return node.data;
+        // another option is:
+        // Node<E> node = getNode(index);
+        // return node.data;
 
         return getNode(index).data;
     }
 
 
     public int indexOf(E item) {
+        Node<E> current = head.next;
+        for (int i = 0; i < size; i++) {
+            if (current.data.equals(item))
+                return i;
+            current = current.next;
+        }
         return -1;
     }
 
@@ -101,20 +113,24 @@ public class LinkedList<E> implements List<E> {
 
     public static void main(String[] args) {
         List<Integer> nums = new LinkedList<>();
-        //add elements
+        // add elements
         nums.add(1);
         nums.add(2);
         nums.add(3);
         nums.add(4);
+        nums.add(2,5);
 
-        //get elements
-        System.out.println(nums.get(0));
-        System.out.println(nums.get(1));
+        // Testing index out of bound exception
+        //nums.add(6,7);
 
-        //call indexOf 
+        // get elements
+        System.out.println("Get: " + nums.get(0));
+        System.out.println("Get: " + nums.get(1));
+
+        // call indexOf 
         System.out.println("Index of 3 is: " + nums.indexOf(3));
 
-        //List items from 6.1 #2
+        // List items from 6.1 #2
         List<Integer> items = new LinkedList<>();
         items.add(1);
         items.add(7);

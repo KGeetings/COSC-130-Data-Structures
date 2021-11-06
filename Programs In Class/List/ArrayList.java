@@ -34,9 +34,9 @@ public class ArrayList<E> implements List<E> {
         data[index] = item;
         // increment size
         size++;
-        //best case: O(1)
-        //worst case: O(n)
-        //average case: O(n)
+        // best case: O(1)
+        // worst case: O(n)
+        // average case: O(n)
     }
 
     @SuppressWarnings("unchecked")
@@ -110,20 +110,20 @@ public class ArrayList<E> implements List<E> {
     
     public static void main(String[] args) {
         List<Integer> nums = new ArrayList<>();
-        //add elements
+        // add elements
         nums.add(1);
         nums.add(2);
         nums.add(3);
         nums.add(4);
 
-        //get elements
+        // get elements
         System.out.println(nums.get(0));
         System.out.println(nums.get(1));
 
-        //call indexOf 
+        // call indexOf 
         System.out.println("Index of 3 is: " + nums.indexOf(3));
 
-        //List items from 6.1 #2
+        // List items from 6.1 #2
         List<Integer> items = new ArrayList<>();
         items.add(1);
         items.add(7);
