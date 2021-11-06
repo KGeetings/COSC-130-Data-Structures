@@ -71,10 +71,8 @@ public class ArrayList<E> implements List<E> {
         }
         // decrement size
         size--;
-        // shift elements to the left of size over one
-        for (int i = size; i < capacity; i++) {
-            data[i] = null;
-        }
+        // set last element to null
+        data[size] = null;
         // shrink array if necessary
         if (size > 0 && size == capacity / 4) {
             resize(capacity / 2);
