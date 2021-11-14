@@ -15,6 +15,13 @@ public class Recursion {
       return 1 + add(m, n - 1);
    }
 
+   public static int mul(int m, int n) {
+      if (n == 0) {
+         return 0;
+      }
+      return m + mul(m, n - 1);
+   }
+
    public static int fib(int n) {
       if (n <= 1) {
          return 1;
@@ -32,5 +39,8 @@ public class Recursion {
       for (int n = 0; n < 10; n++) {
          System.out.print(fib(n) + ", ");
       }
+
+      System.out.println("\nMul(2,4): " + mul(2, 4));
+      System.out.println("\nMul(5,4): " + mul(5, 4));
    }
 }
