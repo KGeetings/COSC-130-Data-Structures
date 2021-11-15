@@ -48,7 +48,7 @@ public class Cashier {
       if (!free()) {
          currentCustomer.serve();
          if (currentCustomer.finished()) {
-            //totalWait += currentCustomer.getWaitingTimeThing();
+            totalWait += currentCustomer.wait(time);
             currentCustomer = null;
          }
       }
