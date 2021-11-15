@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Cashier {
    // declare queue of customers
+   private Queue<Customer> queue = new ArrayQueue<Customer>();
    private Customer currentCustomer;
    private double newCustomerProbability;
    private int maxWait;
@@ -27,17 +28,30 @@ public class Cashier {
    
    private void addCustomer(Customer c) {
       // if no current customer, c becomes current; otherwise c has to wait in the queue
-      
+      if (free()) {
+         currentCustomer = c;
+      } else {
+         queue.enqueue(c);
+      }
       count++;
    }
    
    public void tick(int time) {
       // if free and someone is waiting, make that customer current
-
+      if (free() && !queue.isEmpty()) {
+         currentCustomer = queue.dequeue();
+      }
       // if not free
       //    serve current customer
       //    if they finish, add their waiting time to the total wait time
       //        and set current customer to null
+      if (!free()) {
+         currentCustomer.serve();
+         if (currentCustomer.finished()) {
+            //totalWait += currentCustomer.getWaitingTimeThing();
+            currentCustomer = null;
+         }
+      }
    }
    
    public boolean free() {
@@ -46,7 +60,7 @@ public class Cashier {
    
    public boolean finished() {
       // return true if there is no current customer and the queue is empty
-      return true;
+      return free() && queue.isEmpty();
    }
    
    public int count() {

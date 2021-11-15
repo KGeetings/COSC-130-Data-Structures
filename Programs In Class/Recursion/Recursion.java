@@ -29,8 +29,16 @@ public class Recursion {
       return fib(n - 1) + fib(n - 2);
    }
 
+   public static void towers(int n, int from, int to, int using) {
+      if (n >= 1) {
+         towers(n - 1, from, using, to);
+         System.out.println("Move disk " + n + " from " + from + " to " + to);
+         towers(n - 1, using, to, from);
+      }
+   }
+
    public static void main(String[] args) {
-      for (int n = 0; n < 10; n++) {
+      /* for (int n = 0; n < 10; n++) {
          System.out.println(n + "! = " + factorial(n));
       }
 
@@ -41,6 +49,8 @@ public class Recursion {
       }
 
       System.out.println("\nMul(2,4): " + mul(2, 4));
-      System.out.println("\nMul(5,4): " + mul(5, 4));
+      System.out.println("\nMul(5,4): " + mul(5, 4)); */
+
+      towers(4, 0, 1, 2);
    }
 }
