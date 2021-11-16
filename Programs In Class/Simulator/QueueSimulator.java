@@ -4,21 +4,23 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class QueueSimulator {
-   private Cashier c1;
-   private Cashier c2;
+   List<Cashier> cashierList = new ArrayList<Cashier>(10);
    private int time;
    private int numberOfRuns;
    
    public QueueSimulator(double p, int amountRuns) {
-      c1 = new Cashier(p, 7);
-      c2 = new Cashier(p, 10);
+      for (int i = 1; i <= 10; i++) {
+         cashierList.add(new Cashier(p, i));
+      }
       numberOfRuns = amountRuns;
    }
    
    public void run(int steps) {
       for (int i = 0; i < steps; i++) {
-         c1.maybeAddCustomer(time);
-         c2.maybeAddCustomer(time);
+         // for each cashier in the list maybeAddCustomer(time)
+         for (Cashier cashier : cashierList) {
+            cashier.maybeAddCustomer(time);
+         }
          tick();
       }
       while (anyNotFinished()) {
@@ -27,25 +29,32 @@ public class QueueSimulator {
    }
    
    public void tick() {
-      c1.tick(time);
-      c2.tick(time);
+      // for each cashier in the list tick(time)
+      for (Cashier cashier : cashierList) {
+         cashier.tick(time);
+      }
       time++;
    }
    
    private boolean anyNotFinished() {
-      return !c1.finished() || !c2.finished();
+      // for each cashier in the list check is not finished
+      for (Cashier cashier : cashierList) {
+         if (!cashier.finished()) {
+            return true;
+         }
+      }
+      return false;
    }
 
    public void printStats() {
       System.out.println("Time: " + time);
-      
-      System.out.println();
-      System.out.println("Cashier with max wait = " + c1.maxWait());
-      System.out.println("Average wait time: " + c1.totalWait() / numberOfRuns);
 
-      System.out.println();
-      System.out.println("Cashier with max wait = " + c2.maxWait());
-      System.out.println("Average wait time: " + c2.totalWait() / numberOfRuns);
+      // for each cashier print the cashiers maxWait() and Average wait time
+      for (Cashier cashier : cashierList) {
+         System.out.println();
+         System.out.println("Cashier with max wait = " + cashier.maxWait());
+         System.out.println("Average wait time: " + cashier.totalWait() / numberOfRuns);
+      }
    }
    
    public static void main(String[] args) {
