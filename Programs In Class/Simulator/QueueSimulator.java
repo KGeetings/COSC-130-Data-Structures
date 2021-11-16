@@ -1,5 +1,8 @@
 package Simulator;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class QueueSimulator {
    private Cashier c1;
    private Cashier c2;
@@ -43,14 +46,6 @@ public class QueueSimulator {
       System.out.println();
       System.out.println("Cashier with max wait = " + c2.maxWait());
       System.out.println("Average wait time: " + c2.totalWait() / numberOfRuns);
-   }
-
-   public int c1TotalWait() {
-      return c1.totalWait();
-   }
-
-   public int c2TotalWait() {
-      return c2.totalWait();
    }
    
    public static void main(String[] args) {
