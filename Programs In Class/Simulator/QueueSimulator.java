@@ -4,10 +4,12 @@ public class QueueSimulator {
    private Cashier c1;
    private Cashier c2;
    private int time;
+   private int numberOfRuns;
    
-   public QueueSimulator(double p) {
+   public QueueSimulator(double p, int amountRuns) {
       c1 = new Cashier(p, 7);
       c2 = new Cashier(p, 10);
+      numberOfRuns = amountRuns;
    }
    
    public void run(int steps) {
@@ -30,22 +32,34 @@ public class QueueSimulator {
    private boolean anyNotFinished() {
       return !c1.finished() || !c2.finished();
    }
-   
+
    public void printStats() {
       System.out.println("Time: " + time);
       
       System.out.println();
       System.out.println("Cashier with max wait = " + c1.maxWait());
-      System.out.println("Total wait: " + c1.totalWait());
+      System.out.println("Average wait time: " + c1.totalWait() / numberOfRuns);
 
       System.out.println();
       System.out.println("Cashier with max wait = " + c2.maxWait());
-      System.out.println("Total wait: " + c2.totalWait());
+      System.out.println("Average wait time: " + c2.totalWait() / numberOfRuns);
+   }
+
+   public int c1TotalWait() {
+      return c1.totalWait();
+   }
+
+   public int c2TotalWait() {
+      return c2.totalWait();
    }
    
    public static void main(String[] args) {
-      QueueSimulator sim = new QueueSimulator(0.2);
-      sim.run(1000);
+      QueueSimulator sim = new QueueSimulator(0.2, 10);
+
+      // run the simulation 10 times at 1000 steps each
+      for (int i = 0; i < 10; i++) {
+         sim.run(1000);
+      }
       sim.printStats();
    }
 }
