@@ -2,6 +2,7 @@ package Recursion;
 
 public class Recursion {
    public static int factorial(int n) {
+      // Base case, we get a stackOverFlowError if we try to call the call stack, as we just keep calling new factorials
       if (n <= 1) {
          return 1;
       }

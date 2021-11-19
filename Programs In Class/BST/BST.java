@@ -39,11 +39,43 @@ public class BST {
         }
     }
 
+    public boolean contains (int data) {
+        return (findNode(data, root) != null);
+    }
+
+    private Node findNode(int data, Node n) {
+        if (n == null) {
+            return null;
+        } if (data == n.data) {
+            return n;
+        } else if (data < n.data) {
+            return findNode(data, n.left);
+        } else {
+            return findNode(data, n.right);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return inorder(root);
+    }
+
+    private String inorder(Node n) {
+        if (n == null) {
+            return "";
+        }
+        // left, root (node), right
+        return inorder(n.left) + n.data + " " + inorder(n.right);
+    }
+
     public static void main(String[] args) {
         BST t = new BST();
         int[] nums = {17, 5, 92, 50, 8, 23, 14, 37, 75};
         for (int num: nums) {
             t.add(num);
         }
+        System.out.println(t);
+        System.out.println("Contains 29: " + t.contains(29));
+        System.out.println("Contains 14: " + t.contains(14));
     }
 }
