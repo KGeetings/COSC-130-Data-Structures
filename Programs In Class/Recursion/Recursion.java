@@ -39,19 +39,19 @@ public class Recursion {
    }
 
    public static void main(String[] args) {
-      /* for (int n = 0; n < 10; n++) {
+      for (int n = 0; n < 10; n++) {
          System.out.println(n + "! = " + factorial(n));
       }
 
       System.out.println(add(11,3));
       
-      for (int n = 0; n < 10; n++) {
+      for (int n = 0; n < 100; n++) {
          System.out.print(fib(n) + ", ");
       }
 
-      System.out.println("\nMul(2,4): " + mul(2, 4));
-      System.out.println("\nMul(5,4): " + mul(5, 4)); */
+      /* System.out.println("\nMul(2,4): " + mul(2, 4));
+      System.out.println("\nMul(5,4): " + mul(5, 4));
 
-      towers(4, 0, 1, 2);
+      towers(4, 0, 1, 2); */
    }
 }

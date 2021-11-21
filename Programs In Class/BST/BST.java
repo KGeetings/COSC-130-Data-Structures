@@ -77,5 +77,13 @@ public class BST {
         System.out.println(t);
         System.out.println("Contains 29: " + t.contains(29));
         System.out.println("Contains 14: " + t.contains(14));
+
+        BST t2 = new BST();
+        int[] nums2 = {24,20,13,5,8,14,23,68,45,27,75,69};
+        for (int num: nums2) {
+            t2.add(num);
+        }
+        System.out.println("contains 14: " + t2.contains(14));
+        System.out.println("contains 51: " + t2.contains(51));
     }
 }
