@@ -1,5 +1,7 @@
 package BST;
 
+import java.util.NoSuchElementException;
+
 public class BST {
     private Node root;
 
@@ -44,16 +46,64 @@ public class BST {
     }
 
     private Node findNode(int data, Node n) {
-        if (n == null) {
+        if (n == null) { // check if tree is empty
             return null;
-        } if (data == n.data) {
+        } 
+        if (data == n.data) { // found it
             return n;
-        } else if (data < n.data) {
+        } else if (data < n.data) { // go left if the data is less than the current node
             return findNode(data, n.left);
-        } else {
+        } else { // go right if the data is greater than the current node
             return findNode(data, n.right);
         }
     }
+
+    private Node maxNode(Node n ) {
+        assert n != null;
+        if (n.right == null) { // if n is the max node return n
+            return n;
+        } else { // else recurse to the right
+            return maxNode(n.right);
+        }
+    }
+
+    public int max() {
+        if (root == null) {
+            throw new NoSuchElementException();
+        } else {
+            return maxNode(root).data;
+        }
+    }
+
+    private Node minNode(Node n) {
+        assert n != null;
+        if (n.left == null) { // if n is the min node return n
+            return n;
+        } else { // else recurse to the left
+            return minNode(n.left);
+        }
+    }
+
+    public int min() {
+        if (root == null) {
+            throw new NoSuchElementException();
+        } else {
+            return minNode(root).data;
+        }
+    }
+
+    /* private Node predNode(Node n) {
+        Node n = findNode(data, root);
+    }
+
+    public int pred(int data){
+        Node n = findNode(data, root);
+        if (n == null) {
+            throw new NoSuchElementException();
+        } else {
+            return predNode(n).data;
+        }
+    } */
 
     @Override
     public String toString() {
@@ -78,12 +128,7 @@ public class BST {
         System.out.println("Contains 29: " + t.contains(29));
         System.out.println("Contains 14: " + t.contains(14));
 
-        BST t2 = new BST();
-        int[] nums2 = {24,20,13,5,8,14,23,68,45,27,75,69};
-        for (int num: nums2) {
-            t2.add(num);
-        }
-        System.out.println("contains 14: " + t2.contains(14));
-        System.out.println("contains 51: " + t2.contains(51));
+        System.out.println("Max: " + t.max());
+        System.out.println("Min: " + t.min());
     }
 }
