@@ -1,3 +1,6 @@
+// 9.1, 9.2 Code Due Fri 12/3
+// Kenyon Geetings
+
 package BST;
 
 import java.util.NoSuchElementException;
@@ -118,6 +121,32 @@ public class BST {
         return p;
     }
 
+    public int succ(int data) {
+        Node n = findNode(data, root);
+        if (n == null) {
+            throw new NoSuchElementException();
+        }
+        Node succ = succNode(n);
+        if (succ == null) {
+            throw new NoSuchElementException();
+        }
+        return succ.data;
+    }
+
+    private Node succNode(Node n) {
+        assert n != null;
+        if (n.right != null) { // if n has a right child, return the min node of n's right child
+            return minNode(n.right);
+        }
+        // move up until there's a left child
+        Node p = n.parent;
+        while (p != null && n == p.right) {
+            n = p;
+            p = p.parent;
+        }
+        return p;
+    }
+
     public void remove(int data) {
         Node n = findNode(data, root);
         if (n != null) {
@@ -173,5 +202,12 @@ public class BST {
         System.out.println("Pred of 23: " + t.pred(23));
         System.out.println("Pred of 14: " + t.pred(14));
         // System.out.println("Pred of 5: " + t.pred(5));
+
+        System.out.println("Succ of 37: " + t.succ(37));
+        System.out.println("Succ of 17: " + t.succ(17));
+        System.out.println("Succ of 23: " + t.succ(23));
+        System.out.println("Succ of 14: " + t.succ(14));
+        System.out.println("Succ of 5: " + t.succ(5));
+        //System.out.println("Succ of 92: " + t.succ(92));
     }
 }
