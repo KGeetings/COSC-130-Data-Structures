@@ -169,6 +169,17 @@ public class BST {
 
     private void replace(Node n, Node child) {
         // replace n with its child in the tree
+        Node parent = n.parent;
+        if (parent == null) {
+            root = child;
+        } else if (n == parent.right) {
+            parent.right = child;
+        } else {
+            parent.left = child;
+        }
+        if (child != null) {
+            child.parent = parent;
+        }
     }
 
     @Override
@@ -209,5 +220,9 @@ public class BST {
         System.out.println("Succ of 14: " + t.succ(14));
         System.out.println("Succ of 5: " + t.succ(5));
         //System.out.println("Succ of 92: " + t.succ(92));
+
+        for (int num: nums) {
+            t.remove(num);
+        }
     }
 }
