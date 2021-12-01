@@ -59,6 +59,7 @@ public class BST {
         } else { // go right if the data is greater than the current node
             return findNode(data, n.right);
         }
+        // Big O: O(h) where h is the height of the tree
     }
 
     private Node maxNode(Node n ) {
