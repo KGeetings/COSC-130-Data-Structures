@@ -17,25 +17,6 @@ import java.nio.file.Paths;
 public class WordTree {
    private Node root;
 
-   private static class Node {
-      private String word;
-      private int count;
-      private Node left, right;
-      private Node(String word, int count) {
-         this.word = word;
-         this.count = 1;
-      }
-   }
-
-   public static String readFile(String filename) {
-      try {
-         return Files.readString(Paths.get(filename));
-      } catch (IOException e) {
-         e.printStackTrace();
-         return "";
-      }
-   }
-
    private void addNode(String word, Node n) {
       if (word.compareTo(n.word) < 0) {
          if (n.left == null) {
@@ -72,6 +53,25 @@ public class WordTree {
          return "\n";
       }
       return inorder(n.left) + n.word + "(" + n.count + ")" + inorder(n.right);
+   }
+
+   public static String readFile(String filename) {
+      try {
+         return Files.readString(Paths.get(filename));
+      } catch (IOException e) {
+         e.printStackTrace();
+         return "";
+      }
+   }
+
+   private static class Node {
+      private String word;
+      private int count;
+      private Node left, right;
+      private Node(String word, int count) {
+         this.word = word;
+         this.count = 1;
+      }
    }
    
    public static void main(String[] args) {
