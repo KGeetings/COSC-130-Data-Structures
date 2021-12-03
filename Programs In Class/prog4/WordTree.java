@@ -10,32 +10,25 @@
 
 package prog4;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class WordTree {
    private Node root;
-   
-   public void add(String word) {
-      // write this
+
+   private static class Node {
+      private String word;
+      private int count;
+      private Node left, right;
+      private Node(String word, int count) {
+         this.word = word;
+         this.count = 1;
+      }
    }
-   
-   private void addNode(String word, Node n) {
-      // write this
-   }
-   
-   @Override
-   public String toString() {
-      // write this
-      return "";
-   }
-   
-   private String inorder(Node n) {
-      // write this
-      return "";
-   }
-   
+
    public static String readFile(String filename) {
       try {
          return Files.readString(Paths.get(filename));
@@ -45,13 +38,47 @@ public class WordTree {
       }
    }
 
-   private static class Node {
-      // write this
+   private void addNode(String word, Node n) {
+      if (word.compareTo(n.word) < 0) {
+         if (n.left == null) {
+            n.left = new Node(word, 0);
+         } else {
+            addNode(word, n.left);
+         }
+      } else if (word.compareTo(n.word) > 0) {
+         if (n.right == null) {
+            n.right = new Node(word, 0);
+         } else {
+            addNode(word, n.right);
+         }
+      } else {
+         n.count++;
+      }
+   }
+   
+   public void add(String word) {
+      if (root == null) {
+         root = new Node(word, 0);
+      } else {
+         addNode(word, root);
+      }
+   }
+   
+   @Override
+   public String toString() {
+      return inorder(root);
+   }
+   
+   private String inorder(Node n) {
+      if (n == null) {
+         return "\n";
+      }
+      return inorder(n.left) + n.word + "(" + n.count + ")" + inorder(n.right);
    }
    
    public static void main(String[] args) {
       WordTree t = new WordTree();
-      String contents = readFile("hamlet.txt");
+      String contents = readFile("Programs In Class/prog4/hamlet.txt");
       for (String word: contents.split("[\\p{Punct}\\s]+")) {
          t.add(word.toLowerCase());
       }
