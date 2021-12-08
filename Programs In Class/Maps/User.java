@@ -13,6 +13,18 @@ public class User {
         this.name = name;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public static void main(String[] args) {
         Map<String, User> users = new HashMap<>();
         users.put("fred", new User("fred", "sectret", "Freddy"));
